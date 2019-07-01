@@ -1,0 +1,18 @@
+{
+    "name": "askommune/inventar",
+    "description": "A PHP class for working with IBS Inventar",
+    "license": "GPL-3.0-or-later",
+    "type": "library",
+    "require": {
+        "datagutten/tools": "^1.1"
+    },
+    "authors": [
+        {
+            "name": "datagutten",
+            "email": "datagutten@datagutten.net"
+        }
+    ],
+    "autoload": {
+        "classmap": ["class.php"]
+    }
+}
