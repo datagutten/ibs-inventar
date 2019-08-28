@@ -263,12 +263,7 @@ class inventar
 					$st=$this->db->prepare("SELECT id FROM $table WHERE navn=?");
 			}
 
-			if(!$st->execute(array($value)))
-			{
-				$errorinfo=$st->errorInfo();
-				trigger_error("Database error: ".$errorinfo[2],E_USER_WARNING);
-				return false;
-			}
+			$st->execute(array($value));
 			$device[$key]=$st->fetchColumn();
 		}
 		return $device;
