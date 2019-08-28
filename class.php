@@ -39,10 +39,7 @@ class inventar
 		$st_device=$this->db->prepare($this->basequery." AND inventar.id=?");
 		$st_device->execute(array($id));
 		$devices=$st_device->fetchAll(PDO::FETCH_ASSOC);
-		if(empty($devices))
-			return false;
-		else
-			return $devices;
+		return $devices;
 	}
 	function finnperson($navn,$mode='skole',$status=false,$kategori=false)
 	{
@@ -64,10 +61,7 @@ class inventar
 		$result=$this->db->query($q="SELECT $fields FROM inventar,inventarkat,personer WHERE inventar.ref_prs=personer.id AND inventar.id=inventarkat.ref_inv AND personer.navn=$navn".$statusquery);
 		//echo $q."\n";
 		$maskiner=$result->fetchall(PDO::FETCH_ASSOC);
-		if(empty($maskiner))
-			return false;
-		else
-			return $maskiner;
+		return $maskiner;
 	}
 	function finn_utstyr($options=array('person'=>false,'status'=>false,'kategori'=>false),$fetch=false)
 	{
@@ -102,20 +96,14 @@ class inventar
 			trigger_error(htmlentities($errorinfo[2]),E_USER_ERROR);
 		}
 		$result=$st->fetchAll(PDO::FETCH_ASSOC);
-		if(empty($result))
-			return false;
-		else
-			return $result;
+		return $result;
 	}
 	function finnhistorie($search)
 	{
 		$search=$this->db->quote("%$search%");
 		$st=$this->db->prepare("SELECT * FROM history WHERE message LIKE $search");
 		$history=$st->fetchAll(PDO::FETCH_ASSOC);
-		if(empty($history))
-			return false;
-		else
-			return $history;
+		return $history;
 	}
 	function personliste()
 	{
